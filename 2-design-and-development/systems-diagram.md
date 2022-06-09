@@ -52,8 +52,8 @@ The solution should be easy to use and not be over complicated. To do this, I wi
 
 #### Aims
 
-* Create a list of controls for the game
-* Create an in-level guide that helps players learn how to play the game
+* Create a fairly easy set of controls for the game.
+* Create a control guide that is informative but simple enough to fit on the pause menu without needing its own section.
 
 ## Pseudocode for the Game
 
