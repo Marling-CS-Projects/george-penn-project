@@ -12,31 +12,30 @@ Usability is an important aspect to my game as I want it to be accessible to all
 
 ### Effective
 
-Users can achieve the goal with completeness and accuracy. To do this, I will make it easy for the players to realise that they need to reach a goal in order to complete a level. I will make this goal clear to see so there is no confusion over where the players need to go.
+Users can achieve the goal with completeness and accuracy. To do this, I will make it easy for the players to realise that they will need to defeat the boss again and again in each phase in order to get to the end of the game. I will make this goal clear to see so there is no confusion over why the boss keeps gaining health.
 
 #### Aims
 
-* Create a clear goal to reach to determine the end of a level
-* Create a clear goal for any multiplayer modes
+* Create a clear marker of progression in the boss fight.
+* Make the player understand that the phases almost serve as levels in the game.
 
 ### Efficiency
 
-The speed and accuracy to which a user can complete the goal. To do this, I will create a menu system which is easy to navigate through in order for to find what you are looking for. The information which is more important can be found with less clicks.
+The speed and accuracy to which a user can complete the goal. To do this, my games menus will be very simple with not too many things going on so that the player can get into the action as soon as possible. I will also display controls in the pause menu so that the player can quickly check what does what, should they forget.
 
 #### Aims
 
 * Create a menu system that is quick and easy to navigate through
-* Create a controls system that isn't too complicated but allows the player to do multiple actions
+* Create a controls system that isn't too complicated but allows the player to do multiple actions, and a clear map of what controls do what.
 
 ### Engaging
 
-The solution is engaging for the user to use. To do this, I will create 5 levels and an online multiplayer mode to keep the players engaged and allow them to have fun while playing the game. Using vector style art will also make the game nicer to look at than blocks, so will draw more people in, keeping them engaged.
+The solution is engaging for the user to use. To do this, i will make the attacks, player and boss stand out in the surrounding area, along with intense music. This will keep the player fixed on the fight and focused on winning. The level layout will be simple enough that the player doesn't have to think about it too much.
 
 #### Aims
 
-* Create a series of levels to work through
-* Create a multiplayer mode to play
-* Incorporate a style of game art the suits the game
+* Create a simple arena for the gameplay to take place
+* Create brightly coloured attacks that are easy to recognise.
 
 ### Error Tolerant
 
