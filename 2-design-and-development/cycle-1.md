@@ -4,15 +4,15 @@
 
 ### Objectives
 
-Load sprites as objects and create two scenes, a start screen scene and a gameplay scene in order to create a level design for my Mario game (practicing with kaboom.js
+Start development by creating the scene for the game's start menu.
 
-* [x] Load all of the sprites onto objects&#x20;
-* [x] Create two separate scenes
-* [x] design a level using the objects that ive coded
+* [x] Load Kaboom
+* [x] Create a background
+* [x] Create a scene
 
 ### Usability Features
 
-The player will be able to interact with the level that i have created, and will recognize what each thing is thanks to the sprites representing them.
+This scene will serve as the first menu the player sees when starting up the game.&#x20;
 
 ### Key Variables
 
