@@ -77,4 +77,36 @@ Evidence for testing
 
 ### Evidence
 
-![](<../.gitbook/assets/Screenshot 2022-06-30 at 09.37.20.png>)
+```
+import kaboom from "kaboom";
+
+//This creates the background colour.
+kaboom({
+  background: [100,0,255],
+  width: 1920,
+  height: 1024,
+  scale: 2,
+  stretch: true,
+  letterbox: true,
+}),
+
+
+
+//This creates the scene for the start menu.
+scene("start", () => {
+//This adds the text.
+  add([
+    text("PRESS ENTER TO START", { size: 96 }),
+    pos(vec2(970, 540)),
+    origin("center"),
+    color(200, 0, 255),
+  ]);
+//This makes the scene change to the game scene when the enter key is pressed.
+  onKeyRelease("enter", () => {
+    go("game");
+  })
+}),
+
+go("start"),
+
+```
