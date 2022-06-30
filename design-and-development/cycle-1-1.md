@@ -108,3 +108,9 @@ Evidence for testing
 ![](<../.gitbook/assets/Screenshot 2022-06-30 at 10.27.30.png>)
 
 ![](<../.gitbook/assets/Screenshot 2022-06-30 at 10.27.20.png>)
+
+
+
+### Other Notes
+
+I feel that the player sprite is a little too small to focus on and its scale needs slight adjusting. I will work on this in the very near future.
