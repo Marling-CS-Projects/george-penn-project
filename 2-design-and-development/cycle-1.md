@@ -54,6 +54,8 @@ go("start")
 
 ### Outcome
 
+All objectives achieved 👍🏻
+
 ### Challenges
 
 Working out the size of the screen and game i wanted was difficult, especially when taking into consideration the fact that it would need to work corresponding to the size of my sprites.
