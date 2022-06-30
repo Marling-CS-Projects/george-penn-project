@@ -105,11 +105,75 @@ Evidence for testing
 
 ### Evidence
 
-![](<../.gitbook/assets/Screenshot 2022-06-30 at 10.27.30.png>)
+```
+//this loads in the sprites needed
+loadRoot("sprites/");
+loadSprite("melon boy", "melon boy.png");
+loadSprite("block", "block.png");
 
-![](<../.gitbook/assets/Screenshot 2022-06-30 at 10.27.20.png>)
+const LEVELS = [
+  [
+    "                              ",
+    "                              ",
+    "                              ", 
+    "                              ",
+    "                              ",
+    "                              ",
+    "                              ",
+    "                              ",
+    "                              ",
+    "                              ",
+    "                              ",
+    "                              ",
+    "     ========     ========    ",    
+    "                              ",
+    "                              ",
+    "                              ",
+    "==============================",
+  ]
+];
+
+const levelConf = {
+  // grid size
+  width: 64,
+  height: 64,
+  pos: vec2(0, 0),
+  // define each object as a list of components
+  "=": () => [
+    sprite("block"),
+    area(),
+    solid(),
+    origin("bot"),
+    "block",
+  ],
+  "p": () => [
+    sprite("melon boy"),
+    area(),
+    body(),
+    origin("bot"),
+    "player"
+
+  ]
+};
 
 
+
+
+//game scene
+scene("game", (levelNumber = 0) => {
+//defines the layers of objects in the game
+  layers([
+    "bg",
+    "game",
+    "ui",
+  ], "game");
+
+  const level = addLevel(LEVELS[levelNumber], levelConf);
+
+  const player = level.spawn("p", 1, 10)
+
+  const SPEED = 800;
+```
 
 ### Other Notes
 
