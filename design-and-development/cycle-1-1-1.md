@@ -22,53 +22,26 @@ These controls are at the core of any 2d game with platforms, and are the minimu
 ### Pseudocode
 
 ```
-const LEVELS = [
-  
+onKeyDown(right arrow key):
+  player flip = facing right
+  player moves at speed 800
 
-        ========     ========        
-                                  
-                                  
-                                  
-    ==============================
- 
 
-const levelConf = {
-  // grid size
-  width: 64,
-  height: 64,
-  pos: vec2(0, 0),
-  // define each object as a list of components
-  
-  Platform:
-  "=":
-    sprite("block"),
-    area(),
-    solid(),
-    origin("bot"),
-    "block",
-  
-  Player Sprite:
-  "p":
-    sprite("melon boy"),
-    area(),
-    body(),
-    origin("bot"),
-    "melon boy"
-     
-game scene:
-//defines the layers of objects in the game
-  layers([
-    "bg",
-    "game",
-    "ui",
-  ], "game");
 
-  level = number of level player is on (in this game's case there is only one level)
-
-  player = level spawn("p", (length along level)1, (height)10)
-  
 });
 
+onKeyDown(left arrow key):
+  player flip = facing left
+  player moves at speed -800 //(800 in the opposite direction)
+  }
+  
+  
+});
+onKeyPress(
+  if (player.grounded()) {
+    player.jump();
+  }
+});
 ```
 
 ## Development
@@ -79,36 +52,33 @@ All objectives achieved 👍🏻
 
 ### Challenges
 
-I ran into a lot of errors involving indentations and adding characters in certain spaces, such as colons, commas, different bracket types, etc. This would always cause the whole game to not work until fixed. Luckily, this means that i can always be sure that there are none of these mistakes, when the game actually does run.
-
-It took a while for me to get my head around exactly how Kaboom's level drawing system worked. I also needed to precisely work out the dimensions of my level in order to work with the sprites i had made.
+Creating the code for using the right key worked almost instantly but coding right turned out to be more challenging due to flipping, reverse speed etc. and required some more proper testing before it worked properly
 
 ## Testing
 
 Evidence for testing
 
-![Game not working due to bracketing error in code](<../.gitbook/assets/Screenshot 2022-06-30 at 10.16.23.png>)
+![](<../.gitbook/assets/Screenshot 2022-06-30 at 12.40.42.png>)
 
-![Level layout visible](<../.gitbook/assets/Screenshot 2022-06-30 at 10.17.40.png>)
 
-![Player spawned into level](<../.gitbook/assets/Screenshot 2022-06-30 at 10.18.09.png>)
 
 ### Tests
 
-| Test | Instructions                                                     | What I expect                                                   | What actually happens                                                                                                             | Pass/Fail |
-| ---- | ---------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| 1    | Run code and click enter on menu screen to get to the game scene | Level layout should appear as drawn out, using correct sprites. | Game doesn't work at all due to multiple issues with indentation and bracketing that urgently need fixing                         | Fail      |
-| 2    | Run code and click enter on menu screen to get to the game scene | Level layout should appear as drawn out, using correct sprites. | Game works and level layout shows up exactly as drawn out in the code                                                             | Pass      |
-| 3    | Run code and click enter on menu screen to get to the game scene | Level layout should appear as drawn out, using correct sprites. | Level layout is still working as expected, and sprite spawns in. It also doesn't fall through the platform which is a nice bonus. | Pass      |
+| Test | Instructions                                                                                                         | What I expect                                                                             | What actually happens                                                                                                         | Pass/Fail |
+| ---- | -------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | --------- |
+| 1    | Run code and click enter on menu screen to get to the game scene, then use arrow keys and space key to test movement | Player sprite should have horizontal movement and a jump.                                 | Player can move right and jump, but pressing left causes the sprite to teleport off the screen for a reason i don't yet know. | Fail      |
+| 2    | Run code and click enter on menu screen to get to the game scene, then use arrow keys and space key to test movement | After changing some code and indentation, all 3 movement inputs should now work properly. | Left, right and jump are all now working correctly.                                                                           | Pass      |
 
 ### Evidence
 
-![](<../.gitbook/assets/Screenshot 2022-06-30 at 10.27.30.png>)
+const SPEED = 800;
 
-![](<../.gitbook/assets/Screenshot 2022-06-30 at 10.27.20.png>)
+onKeyDown("right", () => { player.flipX(false) player.move(SPEED, 0);
 
+}); onKeyDown("left", () => { player.flipX(true) if (toScreen(player.pos).x > 20) { player.move(-SPEED, 0); }
 
+}); onKeyPress("space", () => { if (player.grounded()) { player.jump(); }
 
 ### Other Notes
 
-I feel that the player sprite is a little too small to focus on and its scale needs slight adjusting. I will work on this in the very near future.
+Player jump height will need adjusting as it is currently too low to reach the platforms.
