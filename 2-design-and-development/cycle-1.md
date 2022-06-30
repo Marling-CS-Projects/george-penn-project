@@ -74,3 +74,5 @@ Evidence for testing
 | 2    | Run code     | Same desired outcome of previous test. This time, the text should appear in the centre of the screen.                                         | Text appears in the correct size and position now and everything else is still working as expected.                                                    | Pass      |
 
 ### Evidence
+
+![](<../.gitbook/assets/Screenshot 2022-06-30 at 09.37.20.png>)
