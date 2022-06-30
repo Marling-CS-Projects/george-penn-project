@@ -62,6 +62,10 @@ Working out the size of the screen and game i wanted was difficult, especially w
 
 Evidence for testing
 
+![1st test result](<../.gitbook/assets/Screenshot 2022-06-30 at 09.34.05.png>)
+
+![2nd test result (success!)](<../.gitbook/assets/Screenshot 2022-06-30 at 09.33.01.png>)
+
 ### Tests
 
 | Test | Instructions | What I expect                                                                                                                                 | What actually happens                                                                                                                                  | Pass/Fail |
