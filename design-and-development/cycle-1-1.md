@@ -89,16 +89,19 @@ It took a while for me to get my head around exactly how Kaboom's level drawing 
 
 Evidence for testing
 
-![1st test result](<../.gitbook/assets/Screenshot 2022-06-30 at 09.34.05.png>)
+![Game not working due to bracketing error in code](<../.gitbook/assets/Screenshot 2022-06-30 at 10.16.23.png>)
 
-![2nd test result (success!)](<../.gitbook/assets/Screenshot 2022-06-30 at 09.33.01.png>)
+![Level layout visible](<../.gitbook/assets/Screenshot 2022-06-30 at 10.17.40.png>)
+
+![Player spawned into level](<../.gitbook/assets/Screenshot 2022-06-30 at 10.18.09.png>)
 
 ### Tests
 
-| Test | Instructions | What I expect                                                                                                                                 | What actually happens                                                                                                                                  | Pass/Fail |
-| ---- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- |
-| 1    | Run code     | Text should appear in the centre of the screen in a clear enough size, and the purple colour i have chosen. Background should also be purple. | Background and text are coloured as expected. Text appears but it is off in the corner of the screen which doesn't look right at all and needs fixing. | Fail      |
-| 2    | Run code     | Same desired outcome of previous test. This time, the text should appear in the centre of the screen.                                         | Text appears in the correct size and position now and everything else is still working as expected.                                                    | Pass      |
+| Test | Instructions                                                     | What I expect                                                   | What actually happens                                                                                                             | Pass/Fail |
+| ---- | ---------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| 1    | Run code and click enter on menu screen to get to the game scene | Level layout should appear as drawn out, using correct sprites. | Game doesn't work at all due to multiple issues with indentation and bracketing that urgently need fixing                         | Fail      |
+| 2    | Run code and click enter on menu screen to get to the game scene | Level layout should appear as drawn out, using correct sprites. | Game works and level layout shows up exactly as drawn out in the code                                                             | Pass      |
+| 3    | Run code and click enter on menu screen to get to the game scene | Level layout should appear as drawn out, using correct sprites. | Level layout is still working as expected, and sprite spawns in. It also doesn't fall through the platform which is a nice bonus. | Pass      |
 
 ### Evidence
 
