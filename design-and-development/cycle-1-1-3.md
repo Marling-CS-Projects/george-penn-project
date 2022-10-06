@@ -45,13 +45,11 @@ Boss spawning function works. The boss moves from side to side in a straight lin
 
 ### Challenges
 
-It was fairly difficult to get the boss to col,lide with hte side walls, as
+It was fairly difficult to get the boss to collide with the side walls, as i had to go back and make sure all the objects in the scene were in the correct layers for the collisions to work correctly.
 
 ## Testing
 
 
-
-![](<../.gitbook/assets/Screenshot 2022-07-01 at 10.42.44.png>)
 
 ### Tests
 
