@@ -49,7 +49,7 @@ It was fairly difficult to get the boss to collide with the side walls, as i had
 
 ## Testing
 
-
+I needed to test multiple instances of collision and how the boss would react.
 
 ### Tests
 
