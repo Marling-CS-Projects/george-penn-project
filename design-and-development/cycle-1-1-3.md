@@ -53,10 +53,10 @@ I needed to test multiple instances of collision and how the boss would react.
 
 ### Tests
 
-| Test | Instructions | What I expect | What actually happens | Pass/Fail |
-| ---- | ------------ | ------------- | --------------------- | --------- |
-| 1    |              |               |                       |           |
-| 2    |              |               |                       |           |
+| Test | Instructions                                  | What I expect                                                                               | What actually happens | Pass/Fail |
+| ---- | --------------------------------------------- | ------------------------------------------------------------------------------------------- | --------------------- | --------- |
+| 1    | Run game and check for boss sprite movement.  | Boss should immediately moving, and changing direction when coming into contact with walls. |                       |           |
+| 2    |                                               |                                                                                             |                       |           |
 
 ### Evidence
 
