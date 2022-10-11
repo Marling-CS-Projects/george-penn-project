@@ -53,10 +53,10 @@ I needed to test multiple instances of collision and how the boss would react.
 
 ### Tests
 
-| Test | Instructions                                  | What I expect                                                                               | What actually happens | Pass/Fail |
-| ---- | --------------------------------------------- | ------------------------------------------------------------------------------------------- | --------------------- | --------- |
-| 1    | Run game and check for boss sprite movement.  | Boss should immediately moving, and changing direction when coming into contact with walls. |                       |           |
-| 2    |                                               |                                                                                             |                       |           |
+| Test | Instructions                                  | What I expect                                                                                     | What actually happens                                                                                                            | Pass/Fail |
+| ---- | --------------------------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| 1    | Run game and check for boss sprite movement.  | Boss should immediately start moving, and changing direction when coming into contact with walls. | Boss moves and bounces off of walls and the player. There are some bugs with player - boss collision.                            | Pass      |
+| 2    | Jump on top of boss and see what happens      | Boss should have collision from the top.                                                          | Boss has collision, but is treated like a platform and the boss can clip through platforms if the player jumps at the right time | Pass      |
 
 ### Evidence
 
