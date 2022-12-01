@@ -20,24 +20,15 @@ Health and score will be arguably the two most important variables for the playe
 
 ### Key Variables
 
-| Variable Name | Use                                                                                                                                       |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| health()      | Starts at 3 and decreases by 1 each time the player takes damage. Reaching 0 causes the player to 'die' and the game ends.                |
-| score()       | Calls the boss to be spawned in with all the properties assigned to it. This can be used to make the boss disappear, the come back later. |
+| Variable Name | Use                                                                                                                        |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| health()      | Starts at 3 and decreases by 1 each time the player takes damage. Reaching 0 causes the player to 'die' and the game ends. |
+| score()       |                                                                                                                            |
 
 ### Pseudocode
 
 ```
-   spawnBoss:
-    properties:
-      sprite(boss)
-      area(same as sprite),
-      solid,
-      starting position(160, 120),
-      direction(forward),
-      patrol,
-      layer(background),
-      name: "boss"
+  
   
 
 ```
@@ -46,17 +37,17 @@ Health and score will be arguably the two most important variables for the playe
 
 ### Outcome
 
-Boss spawning function works. The boss moves from side to side in a straight line and bounces off of the walls. Upon colliding with the player, it bounces off and moves the other direction. However, there are a few issues such as the boss being frozen in place if the player holds the inputs for the character to run into the boss, and the boss being able to be used as a platform and even clipped through the stage if the player jumps at certain times.
+
 
 
 
 ### Challenges
 
-It was fairly difficult to get the boss to collide with the side walls, as i had to go back and make sure all the objects in the scene were in the correct layers for the collisions to work correctly.
+
 
 ## Testing
 
-I needed to test multiple instances of collision and how the boss would react.
+
 
 ### Tests
 
