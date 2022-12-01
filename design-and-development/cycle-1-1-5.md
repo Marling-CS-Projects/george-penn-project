@@ -1,15 +1,24 @@
-# Cycle 6
+# Cycle 7
 
 ## Design
 
 ### Objectives
 
-* [x] Create the boss and add them to the game.
-* [x] Give them movement and collision with the player.
+* [x] Add a 'HEALTH' variable that ends the round upon reaching zero. (Must have an on-screen counter).
+* [x] Add a 'SCORE' variable that increases over time and stops increasing when the game ends. (Must have an on-screen counter).
+* [x] Implement 'invincibility frames' that stop the player from taking more than 1 health point of damage at a time.
+
+### NOTE:
+
+At this point during the game-creating process, I decided that the original plan for my game was perhaps too complex to be feasible to complete. I slightly changed the idea of my game to one in which the boss is invincible, and the goal is to achieve the highest score possible by surviving for as long as possible.&#x20;
 
 ### Usability Features
 
-This will be the first step to adding the actual 'boss' element to the game. The boss will be a constant threat, making the player have to stay aware of their location at all times to plan their movements.
+Health and score will be arguably the two most important variables for&#x20;
+
+
+
+
 
 ### Key Variables
 
@@ -61,6 +70,28 @@ I needed to test multiple instances of collision and how the boss would react.
 ### Evidence
 
 ```
+function patrol(distance = 100, speed = 50, dir = 1) {
+  return {
+    id: "patrol",
+    require: ["pos", "area",],
+    startingPos: vec2(0, 0),
+    add() {
+      this.startingPos = this.pos;
+      this.on("collide", (obj, side) => {
+        
+          dir = -dir;
+        }
+      );
+    },
+    update() {
+      if (Math.abs(this.pos.x - this.startingPos.x) >= distance) {
+        dir = -dir;
+      }
+      this.move(speed * dir, 0);
+    },
+  };
+}
+
 ```
 
 ### Other Notes
