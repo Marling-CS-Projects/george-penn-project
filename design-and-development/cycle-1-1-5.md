@@ -14,7 +14,7 @@ At this point during the game-creating process, I decided that the original plan
 
 ### Usability Features
 
-Health and score will be arguably the two most important variables for&#x20;
+Health and score will be arguably the two most important variables for the player's experience. These two variables go hand in hand to provide the player's main objective: to survive and score big.
 
 
 
