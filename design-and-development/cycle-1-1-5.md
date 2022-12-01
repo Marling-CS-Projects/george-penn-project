@@ -18,14 +18,12 @@ Health and score will be arguably the two most important variables for the playe
 
 
 
-
-
 ### Key Variables
 
 | Variable Name | Use                                                                                                                                       |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| solid()       | Gives the boss object the solid property, allowing it to collide into other solid objects.                                                |
-| spawnBoss()   | Calls the boss to be spawned in with all the properties assigned to it. This can be used to make the boss disappear, the come back later. |
+| health()      | Starts at 3 and decreases by 1 each time the player takes damage. Reaching 0 causes the player to 'die' and the game ends.                |
+| score()       | Calls the boss to be spawned in with all the properties assigned to it. This can be used to make the boss disappear, the come back later. |
 
 ### Pseudocode
 
