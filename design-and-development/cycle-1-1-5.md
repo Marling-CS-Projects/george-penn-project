@@ -44,15 +44,6 @@ if invincible is true
       when iframes reaches 100 {
          invincible = false
           iframes go back down to 0
-
-let score = 0
-
-upon start, 
-let score = 0
-score constantly increases from 0
-on death:
-  score stops increasing
-  
           
 
   
@@ -63,15 +54,11 @@ on death:
 
 ### Outcome
 
-* Working health mechanic
-* Working score mechanic
-* Invincibility frames correctly prevent damage from being taken when active,
+
 
 
 
 ### Challenges
-
-The main challenge of this development cycle was getting the iframes to work and last long enough, with the animation I made for the iframes working correctly. A lot of the time, the animation would either last forever, get stuck, or not trigger at all.
 
 
 
@@ -81,10 +68,10 @@ The main challenge of this development cycle was getting the iframes to work and
 
 ### Tests
 
-| Test | Instructions                                        | What I expect                                                                                                                                | What actually happens                                                                                                               | Pass/Fail |
-| ---- | --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| 1    | Run into the boss and check for decrease in health. | Player health should decrease by 1 and no more at once due to protection from invincibilty frames. Invincibiltiy animation should also play. | Player health decreases by 1 and does not increase further during the invincibility time which is correctly shown by the animation. | Pass      |
-| 2    | Jump on top of boss and see what happens            | Boss should have collision from the top.                                                                                                     | Boss has collision, but is treated like a platform and the boss can clip through platforms if the player jumps at the right time    | Pass      |
+| Test | Instructions                                  | What I expect                                                                                     | What actually happens                                                                                                            | Pass/Fail |
+| ---- | --------------------------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| 1    | Run game and check for boss sprite movement.  | Boss should immediately start moving, and changing direction when coming into contact with walls. | Boss moves and bounces off of walls and the player. There are some bugs with player - boss collision.                            | Pass      |
+| 2    | Jump on top of boss and see what happens      | Boss should have collision from the top.                                                          | Boss has collision, but is treated like a platform and the boss can clip through platforms if the player jumps at the right time | Pass      |
 
 ### Evidence
 
