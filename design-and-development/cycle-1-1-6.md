@@ -1,4 +1,4 @@
-# Cycle 7
+# Cycle 8
 
 ## Design
 
@@ -96,168 +96,23 @@ Creating the behaviour for the floating blocks was easily the biggest challenge 
 ### Evidence
 
 ```
-function spawnEvil() {
-
-		// add tree obj
-		add([
-			rect(10, rand(30, 125)),
-			area(),
-			pos(300, 240),
-			origin("botleft"),
-			color(0, 255, 150),
-			move(LEFT, SPEED),
-      layer("game"),
-      patrol(1),
-			cleanup(),
-			"evil",
-     
-		
-
-		// wait a random amount of time to spawn next tree
-		wait(rand(1, 3), spawnEvil)
-
-	]);}
-
-	// start spawning trees
-	spawnEvil()
-
-    function spawnEvil2() {
-
-		// add tree obj
-		add([
-			rect(10, 50),
-			area(),
-			pos(0, 40),
-			origin("botleft"),
-			color(0, 255, 150),
-			move(RIGHT, SPEED2),
-      layer("game"),
-      patrol(1),
-			cleanup(),
-			"evil",
-     
-		
-
-		// wait a random amount of time to spawn next tree
-		wait( 5, spawnEvil2)
-
-	]);}
-
-	// start spawning trees
-	spawnEvil2()
-
-  
-
-    function spawnEvil3() {
-
-		// add tree obj
-		add([
-			rect(10, 10),
-			area(),
-			pos(rand(0,255), 0),
-			origin("botleft"),
-			color(0, 255, 150),
-			move(DOWN, SPEED3),
-      layer("game"),
-			cleanup(),
-			"evil",
-     
-		
-
-		// wait a random amount of time to spawn next tree
-		wait( rand(5), spawnEvil3)
-
-	]);}
-
-	// start spawning trees
-	spawnEvil3()
-
-     function spawnEvil4() {
-
-		// add tree obj
-		add([
-			rect(10, 10),
-			area(),
-			pos(rand(0,255), 255),
-			origin("botleft"),
-			color(0, 255, 150),
-			move(UP, SPEED3),
-      layer("game"),
-			cleanup(),
-			"evil",
-     
-		
-
-		// wait a random amount of time to spawn next tree
-		wait( rand(5), spawnEvil4)
-
-	]);}
-
-	// start spawning trees
-	spawnEvil4()
-
-  function spawnHeal() {
-
-		// add tree obj
-		add([
-			rect(20, 20),
-			area(),
-			pos(300, rand(0,220)),
-			origin("botleft"),
-			color(255, 200, 200),
-			move(LEFT, SPEED4),
-      layer("game"),
-			cleanup(),
-			"heal",
-     
-		
-
-		// wait a random amount of time to spawn next tree
-		wait( rand(10  , 15 ), spawnHeal)
-
-	]);}
-
-	// start spawning trees
-	spawnHeal()
-
-
-
-
-
-  player.onCollide("boss", (boss) => {
-    shake(80)
-    invincible = true
-    if (health > 1) {
-      health = 1
-    }
-    else {
-      health -=1
-    }
-    destroy(boss)
-    wait(3, spawnBoss)
-  })
-  
-
-   player.onCollide("evil", (evil) => {
-  if (invincible == false) {
-    shake (5)
-    health -= 1
-    invincible = true
-    destroy(evil)
+onKeyPress("up", () => {
+  if (player.isGrounded()) {
+    player.jump(450);
   }
-  else{
-    return;
-  };
-  });
+  else {
+    if (dub == true) {
+      player.jump(450)
+      dub = false
+    }
+    else{
+      return
+    }
+  }
+  
+});		
 
-     player.onCollide("heal", (heal) => {
-    health += 1
-    hard += 1
-    invincible = true
-    destroy(heal)
- 
-  });
- 
+		
 
    
 
