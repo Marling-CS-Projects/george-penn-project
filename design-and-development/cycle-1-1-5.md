@@ -23,15 +23,32 @@ Health and score will be arguably the two most important variables for the playe
 | Variable Name | Use                                                                                                                        |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | health()      | Starts at 3 and decreases by 1 each time the player takes damage. Reaching 0 causes the player to 'die' and the game ends. |
-| score()       |                                                                                                                            |
+| score()       | starts at zero and increases over time. Resets for each new game.                                                          |
 
 ### Pseudocode
 
-```
-  
+<pre><code><strong>
+</strong><strong>let health = 3
+</strong><strong>
+</strong><strong>let healthtext = 
+</strong><strong>"HEALTH:" + health
+</strong>
+when player collides with boss:
+  if player isnt invincible:
+    lose 1 health
+    invincible = true
+  }  
+
+if invincible is true
+        iframes constantly increase from 0
+      when iframes reaches 100 {
+         invincible = false
+          iframes go back down to 0
+          
+
   
 
-```
+</code></pre>
 
 ## Development
 
