@@ -1,30 +1,30 @@
-# Cycle 7
+# Cycle 6
 
 ## Design
 
 ### Objectives
 
-* [x] Add moving obstacles to work alongside the boss to complete the element of danger to the game.&#x20;
-* [x] Add an item that can increase the player's health
-* [x] Fix the issues with boss collision by making the boss despawn and come back after a few seconds. Also, increase the danger of the boss by making it able to deal more damage and ignore invincibility frames.
-* [x] Implement a screen shake effect upon being damaged, with a bigger one occuring when being damaged by the boss.
+* [x] Add a 'HEALTH' variable that ends the round upon reaching zero. (Must have an on-screen counter).
+* [x] Add a 'SCORE' variable that increases over time and stops increasing when the game ends. (Must have an on-screen counter).
+* [x] Implement 'invincibility frames' that stop the player from taking more than 1 health point of damage at a time.
 
 ### NOTE:
 
-With adding all the other obstacles for the player, i wanted to make the boss still seem more dangerous above everything else.  I also wanted to make rounds of the game last longer by adding an opportunity to gain health back, or even get more health than 3.&#x20;
+At this point during the game-creating process, I decided that the original plan for my game was perhaps too complex to be feasible to complete. I slightly changed the idea of my game to one in which the boss is invincible, and the goal is to achieve the highest score possible by surviving for as long as possible.&#x20;
 
 ### Usability Features
 
-This dev cycle will top off the obstacle elements of the game and will complete the most basic form of the game before adding extra features.
+Health and score will be arguably the two most important variables for the player's experience. These two variables go hand in hand to provide the player's main objective: to survive and score big.
 
 
 
 ### Key Variables
 
-| Variable Name | Use                                                                                  |
-| ------------- | ------------------------------------------------------------------------------------ |
-| spawnEvil()   | Spawns in a moving block that deals 1 damage to the player and disappears on impact. |
-| wait()        | Waits a given number of seconds before performing instructions.                      |
+| Variable Name | Use                                                                                                                                                |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| health        | Starts at 3 and decreases by 1 each time the player takes damage. Reaching 0 causes the player to 'die' and the game ends.                         |
+| score         | starts at zero and increases over time. Resets for each new game.                                                                                  |
+| died          | A true or false variable that determines wether the player is currently dead or not. This helps with ending a round and going to the death screen. |
 
 ### Pseudocode
 
