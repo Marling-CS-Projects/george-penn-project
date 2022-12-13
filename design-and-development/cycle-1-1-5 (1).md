@@ -20,10 +20,11 @@ Health and score will be arguably the two most important variables for the playe
 
 ### Key Variables
 
-| Variable Name | Use                                                                                                                        |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| health()      | Starts at 3 and decreases by 1 each time the player takes damage. Reaching 0 causes the player to 'die' and the game ends. |
-| score()       | starts at zero and increases over time. Resets for each new game.                                                          |
+| Variable Name | Use                                                                                                                                                |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| health        | Starts at 3 and decreases by 1 each time the player takes damage. Reaching 0 causes the player to 'die' and the game ends.                         |
+| score         | starts at zero and increases over time. Resets for each new game.                                                                                  |
+| died          | A true or false variable that determines wether the player is currently dead or not. This helps with ending a round and going to the death screen. |
 
 ### Pseudocode
 
