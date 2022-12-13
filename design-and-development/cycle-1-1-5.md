@@ -44,6 +44,15 @@ if invincible is true
       when iframes reaches 100 {
          invincible = false
           iframes go back down to 0
+
+let score = 0
+
+upon start, 
+let score = 0
+score constantly increases from 0
+on death:
+  score stops increasing
+  
           
 
   
