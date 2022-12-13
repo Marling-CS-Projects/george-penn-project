@@ -69,15 +69,16 @@ When player collides with evil block:
 
 ### Outcome
 
-* Working health mechanic that causes 'death' when health reaches zero.
-* Working score mechanic
-* Invincibility frames correctly prevent damage from being taken when active,
+* Empty space on the stage is now full with a reasonable amount of moving blocks that damage the player.
+* Boss is now much more dangerous and there is much more incentive for the player to steer clear of the boss's path. This also makes the boss feel more like a boss than just a bigger obstacle.&#x20;
+* Evil blocks spawn in random patterns with 2 different variants: Small square blocks that float across the stage in any position, and tall sweeping blocks that move sideways across the top or bottom of the stage like hurdles.
+* Occasionally a healing block will spawn. It has a similar behaviour to one of the small square evil blocks, but it is larger and a bit slower to give the player an appropriate chance to catch it.
 
 
 
 ### Challenges
 
-The main challenge of this development cycle was getting the iframes to work and last long enough, with the animation I made for the iframes working correctly. A lot of the time, the animation would either last forever, get stuck, or not trigger at all.
+Creating the behaviour for the floating blocks was easily the biggest challenge of this segment. It was difficult to find the correct spawn rate, randomisation, speed, etc for the blocks to make the game feel balanced.&#x20;
 
 
 
@@ -87,109 +88,181 @@ The main challenge of this development cycle was getting the iframes to work and
 
 ### Tests
 
-| Test | Instructions                                                                                        | What I expect                                                                                                                                                                                 | What actually happens                                                                                                                                                                       | Pass/Fail |
-| ---- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| 1    | Run into the boss and check for decrease in health. Reach 0 health and check if death screen works. | Player health should decrease by 1 and no more at once due to protection from invincibilty frames. Invincibiltiy animation should also play. Death screen should show up on 0 health reached. | Player health decreases by 1 and does not increase further during the invincibility time which is correctly shown by the animation. Player is sent to death screen when 0 health is reached | Pass      |
-| 2    | Start game and check for increase in score. Die, restart and check for reset in score.              | Score should start increasing at game start, pause at game end and reset at next game start.                                                                                                  | Score increases, stops and resets appropriately.                                                                                                                                            | Pass      |
+| Test | Instructions                                                                                                             | What I expect                                                                                                                                                                               | What actually happens                                                      | Pass/Fail |
+| ---- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- | --------- |
+| 1    | Run into the boss with multiple health points. Run into the boss with 1 health point. Run into the boss when invincible. | Player health should decrease to 1 after being hit by the boss when on multiple health. Player should die when hitting the boss on 1 health. Player still gets hit by boss when invincible. | All expected functions happened properly.                                  | Pass      |
+| 2    | Start game and check for evil blocks and heal blocks spawning in. Run into blocks to test if they do the right thing.    | Evil blocks should decrease player health by 1 and vanish. Heal blocks should increase health by 1 and vanish.                                                                              | Evil blocks perform their function and Heal blocks perform their function. | Pass      |
 
 ### Evidence
 
 ```
-let health = 3;
+function spawnEvil() {
 
-let died = false;
+		// add tree obj
+		add([
+			rect(10, rand(30, 125)),
+			area(),
+			pos(300, 240),
+			origin("botleft"),
+			color(0, 255, 150),
+			move(LEFT, SPEED),
+      layer("game"),
+      patrol(1),
+			cleanup(),
+			"evil",
+     
+		
 
-let invincible = false;
+		// wait a random amount of time to spawn next tree
+		wait(rand(1, 3), spawnEvil)
 
-let iframes = 0;
+	]);}
+
+	// start spawning trees
+	spawnEvil()
+
+    function spawnEvil2() {
+
+		// add tree obj
+		add([
+			rect(10, 50),
+			area(),
+			pos(0, 40),
+			origin("botleft"),
+			color(0, 255, 150),
+			move(RIGHT, SPEED2),
+      layer("game"),
+      patrol(1),
+			cleanup(),
+			"evil",
+     
+		
+
+		// wait a random amount of time to spawn next tree
+		wait( 5, spawnEvil2)
+
+	]);}
+
+	// start spawning trees
+	spawnEvil2()
+
+  
+
+    function spawnEvil3() {
+
+		// add tree obj
+		add([
+			rect(10, 10),
+			area(),
+			pos(rand(0,255), 0),
+			origin("botleft"),
+			color(0, 255, 150),
+			move(DOWN, SPEED3),
+      layer("game"),
+			cleanup(),
+			"evil",
+     
+		
+
+		// wait a random amount of time to spawn next tree
+		wait( rand(5), spawnEvil3)
+
+	]);}
+
+	// start spawning trees
+	spawnEvil3()
+
+     function spawnEvil4() {
+
+		// add tree obj
+		add([
+			rect(10, 10),
+			area(),
+			pos(rand(0,255), 255),
+			origin("botleft"),
+			color(0, 255, 150),
+			move(UP, SPEED3),
+      layer("game"),
+			cleanup(),
+			"evil",
+     
+		
+
+		// wait a random amount of time to spawn next tree
+		wait( rand(5), spawnEvil4)
+
+	]);}
+
+	// start spawning trees
+	spawnEvil4()
+
+  function spawnHeal() {
+
+		// add tree obj
+		add([
+			rect(20, 20),
+			area(),
+			pos(300, rand(0,220)),
+			origin("botleft"),
+			color(255, 200, 200),
+			move(LEFT, SPEED4),
+      layer("game"),
+			cleanup(),
+			"heal",
+     
+		
+
+		// wait a random amount of time to spawn next tree
+		wait( rand(10  , 15 ), spawnHeal)
+
+	]);}
+
+	// start spawning trees
+	spawnHeal()
 
 
-//This creates the scene for the start menu.
-scene("start", () => {
-//This adds the text.
-  add([
-    text("PRESS ENTER TO START!", { size: 24 }),
-    pos(vec2(160, 120)),
-    origin("center"),
-    color(200, 0, 255),
-  ]);
 
-  if (died == true) {
-      add([
-    text("KNOCKED OUT. KEEP GOING.", { size: 18 }),
-    pos(vec2(160, 40)),
-    origin("center"),
-    color(255, 0, 0),
 
-  ]);
-  }
-//This makes the scene change to the game scene when the enter key is pressed.
-  onKeyRelease("enter", () => {
-    go("game");
+
+  player.onCollide("boss", (boss) => {
+    shake(80)
+    invincible = true
+    if (health > 1) {
+      health = 1
+    }
+    else {
+      health -=1
+    }
+    destroy(boss)
+    wait(3, spawnBoss)
   })
-}),
+  
 
-go("start"),
-
-player.onCollide("boss", (boss) => {
+   player.onCollide("evil", (evil) => {
   if (invincible == false) {
+    shake (5)
     health -= 1
     invincible = true
+    destroy(evil)
   }
   else{
     return;
   };
   });
+
+     player.onCollide("heal", (heal) => {
+    health += 1
+    hard += 1
+    invincible = true
+    destroy(heal)
+ 
+  });
  
 
-  onUpdate(() => {
-    if (invincible == true) {
-        iframes += 1
-      if (iframes == 100) {
-         invincible = false
-          iframes = 0
-      }
-    }
-  })
-
-let healthtext = add([
-  text(("HEALTH:" + health), { size: 24 }),
-  pos(vec2(160, 120)),
-  origin("center"),
-  color(200, 0, 255),
-]);
-  
    
- onUpdate(() => {
-	healthtext.text = ("HEALTH:" + health);
-  readd(healthtext);
-})
 
-let score = 0
-
-	const scoreLabel = add([
-		text(("SCORE" + score), { size: 19 }),
-		pos(vec2(70, 232)),
-    origin("center"),
-    color(200, 0, 255),
-  ]);
-	
-
-	// increment score every frame
-	onUpdate(() => {
-		score++
-		scoreLabel.text = ("SCORE:" + score)
-	})
-
-onUpdate(() => {
- if (health == 0) {
-   died = true
-   go("start")
-}
-})})
 
 ```
 
 ### Other Notes
 
-The onUpdate() function was very useful during this dev cycle. Having the ability to run a check every frame allows things to happen at an exact point without a specific time frame.
