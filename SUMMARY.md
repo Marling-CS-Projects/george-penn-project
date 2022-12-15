@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Computer Science Project!](README.md)
+* [Computer Science Project 😭😭😭](README.md)
 
 ## 1 Analysis <a href="#analysis" id="analysis"></a>
 
