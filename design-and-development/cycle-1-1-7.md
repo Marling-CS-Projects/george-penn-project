@@ -23,51 +23,12 @@ These changes, especially the sound effects and music, will finish building the 
 | Variable Name | Use                                                                                                                                                                      |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | hmscore       | Works similarly to the high score variable, except it only counts a score that is achieved in hard mode, and displays separately from the high score on the end screen.  |
-| hm            |                                                                                                                                                                          |
+| hm            | Activates all hardmode functions when true, deactivates them when false.                                                                                                 |
 
 ### Pseudocode
 
 ```
-when UP key pressed:
-  if player is grounded:
-     jump
-  if player is in air AND dub is true:
-  jump
-  set dub to false
 
-when player hits ground:
-set dub to true
-  
-add text ("HIGHSCORE:" + player's highscore 
-    
-
-when ready is true:
-wait 10
-spawn score
-wait(5, spawn score)
-
-when ready is true:
-wait 20
-spawn score
-wait(5, spawn score)
-
-   
-when player hits score box:
-Multiply score by 1.1
-destroy score box
- 
-when player hits speed box:
-set speedytime to true
-destory speed box
- 
-
-  
-when speedytime becomes true:
-activate speed boost and enemy spawn reduction
-start timer
-when timer ends:
-set speedytime to false
- 
 
 ```
 
@@ -75,10 +36,9 @@ set speedytime to false
 
 ### Outcome
 
-* Score boxes spawn occasionally and give the player a score boost that multiplies their current score by 1.1. This is important because it means that each scoring box collected is exponentially more valuable than the last, which gives the player reason to collect every single one.
-* Speed boxes serve as a power-up that temporarily makes dodging attacks much easier by lowering obstacle spawn rate and boosting player speed.
-* Player can now double jump.
-* Highscore function works and is displayed on the death screen.
+* Game now has SFX and music
+* Player can access an info screen with plenty of information on how to play the game.
+* Game now has an optional hard mode that modifies factors such as enemy spawn rate and speed.
 
 
 
@@ -86,7 +46,7 @@ set speedytime to false
 
 ### Challenges
 
-Unfortunately, the high score does not save across game start-ups and is reset when closing the game. This was not an issue I was able to resolve. Deciding the exact effect of the score box was difficult to do, needing to get it to a spot that wasnt obselete or overpowered.&#x20;
+Implementing the changes for hard mode took a long time as it required me to go and add lots of extra values to equations involving obstacle characteristics.
 
 
 
@@ -96,12 +56,12 @@ Unfortunately, the high score does not save across game start-ups and is reset w
 
 ### Tests
 
-| Test | Instructions                                                                                          | What I expect                                                                    | What actually happens                                         | Pass/Fail |
-| ---- | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------- | --------- |
-| 1    | Enter game and try to double jump. Try to jump more than twice at one time.                           | Player sprite should be able to jump twice, but never more than twice at a time. | All expected functions happened properly.                     | Pass      |
-| 2    | Get a score, then get a higher score, then get a lower score. Check for HIGHSCORE changes each round. | Highscore should change ach time a new highest score is reached.                 | Highscore functions properly.                                 | Pass      |
-| 3    | Collect several scoreboxes and watch the score.                                                       | Score should increase by exponential amounts with each score box.                | Score increases by the correct amount with each box collected | Pass      |
-| 4    | Collect a speedbox and view results                                                                   | Player should recieve speedboost and decreased obstacle spawn rate               | Powerup works correctly                                       | Pass      |
+| Test | Instructions                                                                                                            | What I expect                                                                                                      | What actually happens                                                       | Pass/Fail |
+| ---- | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------- | --------- |
+| 1    | Play game and check for sound effects and music.                                                                        | Music should change between end/start screen and game screen, sound effects should play upon appropriate triggers. | All sound effects trigger at the correct time and music functions properly. | Pass      |
+| 2    | Run similar test to the highscore test but with hardmode. Get a highscore in normal mode and check for differentiation. | Highscore and Hardmode highscore should display seperate values.                                                   | Highscore and Hardmode highscore display seperately and work properly.      | Pass      |
+| 3    | Press shift on start screen, then press enter to return to start screen.                                                | Info screen should appear with a working option to return to start screen.                                         | Switching between info and start screen works.                              | Pass      |
+| 4    | Enter hardmode and check for changes in game behaviour, then enter normal mode.                                         | Hardmode should have hardmode functions, then switching to normal mode should return game behaviour to normal.     | Hardmode and normal mode function correctly and seperatley.                 | Pass      |
 
 ### Evidence
 
