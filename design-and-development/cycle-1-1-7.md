@@ -4,27 +4,26 @@
 
 ### Objectives
 
-* [x] Create a double jump function to give the player more movement options against the many obstacles.
-* [x] Add 2 new item blocks: One that boosts the player's score, and one that serves as a powerup that heightens the player's abilities.&#x20;
-* [x] Add a highscore feature that displays at the end of each round.
+* [x] Add music and sound effects to the game.
+* [x] Add an info screen accessible at the start of the game that tells players the objective of the game and gives them information on the mechanics of the game.&#x20;
+* [x] Add an optional HARD MODE to the game, with its own separate high score.
 
 ### NOTE:
 
-Being finished creating the most basic finished version of the game, I wanted to add some more elements to the game that add some more depth and fun to the game.
+This will be the final segment of features that I develop for the game, finishing fleshing it out as a finished product.
 
 ### Usability Features
 
-Being able to double jump will make the player more capable of dodging obstacles and will increase the skill cap of the game. The new items will give the player more scoring opportunities and add more variation to the game.
+These changes, especially the sound effects and music, will finish building the player experience and make the game feel complete.
 
 
 
 ### Key Variables
 
-| Variable Name | Use                                                                                                                                                                                                                   |
-| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| dub           | Allows the player to jump in mid-air when true. Changes to false after a double jump is performed. Changes to true when the player touches a floor. This prevents the player from having more than 2 jumps at a time. |
-| ready         | Sets to true when a round starts and sets to false when a round ends. This is used for starting timers for spawning items.                                                                                            |
-| speedytime    | Activates the functions of the speed block powerup and also begins a timer that deactivates the powerup when the timer ends.                                                                                          |
+| Variable Name | Use                                                                                                                                                                      |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| hmscore       | Works similarly to the high score variable, except it only counts a score that is achieved in hard mode, and displays separately from the high score on the end screen.  |
+| hm            |                                                                                                                                                                          |
 
 ### Pseudocode
 
@@ -183,6 +182,667 @@ scene("start", () => {
     color(200, 0, 255),
    
   ])
+  
+   add([
+    text(("HM HIGHSCORE:" + hmscore), { size: 18 }),
+    pos(vec2(160, 220)),
+    origin("center"),
+    color(255, 0, 0),
+    ])
+    shake(30)
+  }
+
+  
+  
+ 
+
+       
+//This makes the scene change to the game scene when the enter key is pressed.
+  onKeyRelease("enter", () => {
+    bird = 1
+    go("game");
+    ready = true
+    score = 0
+    menmusic.stop()
+    music.play()
+    play("gamestart", {
+      volume:2
+    })
+    
+  })
+
+  onKeyRelease("shift", () => {
+    go("info");
+    
+  })
+
+
+
+  onKeyRelease("h", () => {
+    go("game");
+    ready = true
+    score = 0
+    menmusic.stop()
+    music.play()
+    bird = 2
+    hard = 0.5
+    epic = true
+    play("gamestart", {
+      volume:2
+      
+    })
+    
+  })
+}),
+
+go("start"),
+
+
+scene("info", () => {
+  add([
+    text("Your goal is to survive as long as you can and rack up the highest score you can, by dodging the GREEN obstacles and the BOSS, while collecting the BLUE score boxes to boost your total! PINK boxes will heal your HEALTH, but each one you collect will ramp the difficulty up slightly! YELLOW boxes will grant you a temporary speed boost, and cause less hazards to spawn for some time. You will be INVINCIBLE for a short time after taking damage or being healed, but the BOSS can break through invincibility. The BOSS will always take your health down to 1, unless you were already at 1, in which case youre DEAD! Feeling dangerous? Try out HARD MODE, where everything is FASTER!!!", { size: 12, width: 300}),
+    pos(vec2(160, 110)),
+    origin("center"),
+    color(200, 0, 255),
+   
+   
+  ]);
+  add([
+    text("PRESS SHIFT TO RETURN TO MENU", { size: 12, width: 300}),
+    pos(vec2(160, 230)),
+    origin("center"),
+    color(255, 0, 0),
+   
+   
+  ]);
+
+  onKeyRelease("shift", () => {
+    go("start")
+  })
+
+})
+  
+//game scene
+  
+scene("game", (levelNumber = 0) => {
+//defines the layers of objects in the game
+
+   function spawnBoss(){
+    add([
+      sprite("boss"),
+      area(),
+      solid(),
+      pos(160, 120),
+      dir(),
+      patrol(1),
+      layer("bg"),
+      origin("bot"),
+      "boss"
+  ])}
+
+  
+
+
+   
+  
+  layers([
+    "bg",
+    "game",
+    "ui",
+  ], "game");
+
+  const level = addLevel(LEVELS[levelNumber], levelConf);
+
+    
+  
+
+
+  const player = level.spawn("p", 1, 10)
+
+  player.play("default")
+
+  let hard = 1
+
+  let SPEED = 200 
+
+  let speder = 0
+
+  let speedytime = false
+
+  let SPEED2 = 80
+
+  let SPEED3 = 70
+
+  let SPEED5 = 50
+
+  let spedo = false
+
+   onUpdate(() => {
+  SPEED2 = (80 * hard * bird)
+  })
+
+   onUpdate(() => {
+  SPEED = (200 * bird)
+  })
+
+    onUpdate(() => {
+  SPEED3 = (70 * bird)
+  })
+
+    onUpdate(() => {
+  SPEED4 = (40 * bird)
+  })
+
+  let SPEED4 = 40
+
+  let health = 3;
+
+  let invincible = false;
+
+  let sframes = 0
+
+  let iframes = 0;
+
+  let dub = true 
+
+  
+
+  
+ add([
+      sprite("boss"),
+      area(),
+      solid(),
+      pos(160, 120),
+      dir(),
+      patrol(1),
+      layer("ui"),
+      origin("bot"),
+      "boss"
+  ]);
+      
+  function spawnEvil() {
+
+		// add tree obj
+		add([
+			rect(10, rand(100)),
+			area(),
+			pos(300, 240),
+			origin("botleft"),
+			color(0, 255, 150),
+			move(LEFT, SPEED2),
+      layer("game"),
+			cleanup(),
+			"evil",
+     
+		
+
+		// wait a random amount of time to spawn next tree
+		wait(rand(((1 / bird) + speder), ((4 / bird) + speder)), spawnEvil)
+
+	]);}
+
+	// start spawning trees
+		if (ready == true) {
+    wait(2, spawnEvil)
+  }
+
+    function spawnEvil2() {
+
+		// add tree obj
+		add([
+			rect(10, 50),
+			area(),
+			pos(0, 40),
+			origin("botleft"),
+			color(0, 255, 150),
+			move(RIGHT, SPEED2),
+      layer("game"),
+			cleanup(),
+			"evil",
+     
+		
+
+		// wait a random amount of time to spawn next tree
+		wait( (((7 / bird) + speder) - hard) , spawnEvil2)
+
+	]);}
+
+	// start spawning trees
+		if (ready == true) {
+    wait(2, spawnEvil2)
+  }
+
+  
+
+    function spawnEvil3() {
+
+		// add tree obj
+		add([
+			rect(10, 10),
+			area(),
+			pos(rand(0,255), 0),
+			origin("botleft"),
+			color(0, 255, 150),
+			move(DOWN, SPEED3),
+      layer("game"),
+			cleanup(),
+			"evil",
+     
+		
+
+		// wait a random amount of time to spawn next tree
+		wait( rand(((7 / bird) + speder) - hard), spawnEvil3)
+
+	]);}
+
+	// start spawning trees
+		if (ready == true) {
+    wait(2, spawnEvil3)
+  }
+
+     function spawnEvil4() {
+
+		// add tree obj
+		add([
+			rect(10, 10),
+			area(),
+			pos(rand(0,255), 250),
+			origin("botleft"),
+			color(0, 255, 150),
+			move(UP, SPEED3),
+      layer("game"),
+			cleanup(),
+			"evil",
+     
+		
+
+		// wait a random amount of time to spawn next tree
+		wait( rand(((5 / bird) + speder) - hard), spawnEvil4)
+
+	]);}
+
+	// start spawning trees
+	if (ready == true) {
+    wait(2, spawnEvil4)
+  }
+
+  function spawnHeal() {
+
+		// add tree obj
+		add([
+			rect(20, 20),
+			area(),
+			pos(300, rand(0,220)),
+			origin("botleft"),
+			color(255, 200, 200),
+			move(LEFT, SPEED4),
+      layer("game"),
+			cleanup(),
+			"heal",
+     
+		
+
+		// wait a random amount of time to spawn next tree
+		wait( rand(10, 15), spawnHeal)
+
+    ]);}
+
+	
+
+	// start spawning trees
+	if (ready == true) {
+    wait(15, spawnHeal)
+  }
+
+
+  function spawnScore() {
+
+		// add tree obj
+	add([
+		rect(20, 20),
+		area(),
+		pos(rand(0,255), 0),
+		origin("botleft"),
+		color(0, 180, 255),
+		move(DOWN, SPEED5),
+    layer("game"),
+		cleanup(),
+		"scorebox",
+     
+		
+
+		// wait a random amount of time to spawn next tree
+		wait( (10), spawnScore)
+
+	]);}
+
+	// start spawning trees
+	if (ready == true) {
+    wait(5, spawnScore)
+  }
+
+   function spawnSpeed() {
+
+		// add tree obj
+	add([
+		rect(20, 20),
+		area(),
+		pos(rand(0,255), 0),
+		origin("botleft"),
+		color(255, 255, 0),
+		move(DOWN, SPEED5),
+    layer("game"),
+		cleanup(),
+		"speedbox",
+     
+		
+
+		// wait a random amount of time to spawn next tree
+		wait( rand((30 / bird) , (40 / bird)), spawnSpeed)
+
+	]);}
+
+	// start spawning trees
+	if (ready == true) {
+    wait(20 / bird, spawnSpeed)
+  }
+
+  function spawnScreen() {
+  
+  add([
+			rect(3000, 3000),
+			area(),
+			pos(0, 250),
+			origin("botleft"),
+			color(255, 255, 0),
+      layer("bg"),
+			cleanup(),
+			"speedscreen",
+
+
+
+    ])}
+    
+
+    
+
+
+
+
+  player.onCollide("boss", (boss) => {
+    shake(80)
+    play("bosshit")
+    invincible = true
+    player.play("invin")
+    if (health > 1) {
+      health = 1
+    }
+    else {
+      health -=1
+    }
+    destroy(boss)
+    wait(3, () => {
+    spawnBoss()
+    play("respawn", {
+      volume:2
+    })
+})
+    
+    
+    }
+    
+  )
+  
+  
+
+   player.onCollide("evil", (evil) => {
+  if (invincible == false) {
+    play("hurt", {
+      volume:2
+    })
+    play("hurt2", {
+      volume:2
+    })
+    shake (5)
+    health -= 1
+    invincible = true
+    player.play("invin")
+    destroy(evil)
+  }
+  else{
+    return;
+  };
+  });
+
+     player.onCollide("heal", (heal) => {
+    health += 1
+    hard += (0.1 / bird)
+    invincible = true
+    player.play("invin")
+    destroy(heal)
+    play("healing", {
+      volume:1.5
+    })
+ 
+  });
+
+
+    player.onCollide("scorebox", (scorebox) => {
+    score = (score * 1.1)
+    score = Math.floor(score)
+    play("speedit", {
+      volume:1.2
+    })
+    destroy(scorebox)
+ 
+  });
+
+  player.onCollide("speedbox", (speedbox) => {
+    play("rising", {
+      volume:1.8
+    })
+    speedytime = true
+    destroy(speedbox)
+    
+ 
+  });
+
+  onUpdate(() => {
+    if (invincible == true) {
+        iframes += 1
+      if (iframes == (90)) {
+         invincible = false
+          player.play("default")
+          iframes = 0
+      }
+    }
+  })
+
+  onUpdate(() => {
+    if (speedytime == true) {
+        speder = 3
+        sframes += 1
+        SPEED = 300
+        spedo = true
+      if (sframes == 600 / bird) {
+         speder = 0
+         SPEED = 200
+         speedytime = false
+         sframes = 0
+        spedo = false
+      }
+    }
+  
+  })
+  onUpdate(() => {
+    if (player.isGrounded()) {
+      dub = true
+    }
+  })
+
+   player.onCollide("speedscreen", (speedscreen) => {
+    wait(10, destroy(speedscreen))
+ 
+  });
+      
+    
+  
+
+  
+  
+let healthtext = add([
+  text(("HEALTH:" + health), { size: 19}),
+  pos(vec2(255, 233)),
+  origin("center"),
+  color(200, 0, 255),
+]);
+  
+   
+ onUpdate(() => {
+	healthtext.text = ("HEALTH:" + health);
+  readd(healthtext);
+})
+
+onKeyDown("right", () => {
+  player.flipX(false)
+  player.move(SPEED, 0);
+
+});
+
+onKeyDown("d", () => {
+  player.flipX(false)
+  player.move(SPEED, 0);
+
+});
+
+
+  
+onKeyDown("left", () => {
+  player.flipX(true)
+  player.move(-SPEED, 0);
+});
+
+    
+onKeyDown("a", () => {
+  player.flipX(true)
+  player.move(-SPEED, 0);
+});
+
+  
+onKeyPress("shift", () => {
+  if (player.isGrounded()) {
+    player.jump(10000);
+  }
+});
+  
+onKeyPress("up", () => {
+  if (player.isGrounded()) {
+    player.jump(450);
+    play("jumper")
+  }
+  else {
+    if (dub == true) {
+      player.jump(450)
+      dub = false
+      play("jumper")
+    }
+    else{
+      return
+    }
+  }
+  
+});
+
+  onUpdate(() => {
+	if (bird == 2){
+    hm = score
+  }
+  
+})
+
+  
+
+onKeyPress("w", () => {
+  if (player.isGrounded()) {
+    player.jump(450);
+    play("jumper")
+  }
+   else {
+    if (dub == true) {
+      player.jump(450)
+      dub = false
+      play("jumper")
+    }
+    else{
+      return
+    }
+  }
+  
+});
+  
+
+
+	const scoreLabel = add([
+		text(("SCORE" + score), { size: 19 }),
+		pos(vec2(70, 233)),
+    origin("center"),
+    color(200, 0, 255),
+  ]);
+	
+
+	// increment score every frame
+	onUpdate(() => {
+		score++
+    
+    
+		scoreLabel.text = ("SCORE:" + score)
+	})
+
+
+
+ 
+
+// triggers when hp reaches 0
+
+
+  /*if (invincible == false) {
+    player.play("default")
+ 
+  }
+  else {
+    if (invincible == true) {
+    player.play("invin")
+ 
+  }}*/
+
+
+  
+
+
+
+
+onUpdate(() => {
+ if (health == 0) {
+   died = true
+   ready = false
+   hard = 1
+   go("start")
+   if (score > highscore) {
+     highscore = score
+   }
+   if (score > hmscore) {
+     if (bird == 2) {
+       hmscore = score
+     }
+   }
+   play("end")
+   music.stop()
+   menmusic.play()
+   bluescore = 500
+   
+}
+})
+})
 
 
 ```
