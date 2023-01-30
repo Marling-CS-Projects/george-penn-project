@@ -65,8 +65,7 @@ Implementing the changes for hard mode took a long time as it required me to go 
 
 ### Evidence
 
-```
-loadRoot("sounds/");
+<pre><code>loadRoot("sounds/");
 loadSound("menumusic", "menu.mp3");
 
 loadSound("mainmusic", "MUSIC!.mp3");
@@ -83,21 +82,16 @@ loadSound("speedit", "speedit.mp3");
 loadSound("hardmode", "freebird.mp3");
 
 
-const menmusic = play("menumusic", {
+menu music:
     volume: 0.7,
     loop: true
-}) 
 
-const music = play("mainmusic", {
+
+game music:
     volume: 0.7,
     loop: true
-}) 
 
-const hardmusic = play("hardmode", {
-    volume: 1.2,
-    loop: true
-    
-}) 
+
 
 let highscore = 0
 
@@ -109,11 +103,8 @@ let hm = 0
 
 let epic = false
 
-scene("start", () => {
-//This adds the text.
-  music.stop()
-  hardmusic.stop()
-
+<strong>start scene:
+</strong>
   add([
     text("MELON FLATLINER 2077", { size: 15 }),
     pos(vec2(160, 15)),
@@ -805,7 +796,7 @@ onUpdate(() => {
 })
 
 
-```
+</code></pre>
 
 ### Other Notes
 
