@@ -65,7 +65,7 @@ Implementing the changes for hard mode took a long time as it required me to go 
 
 ### Evidence
 
-<pre><code>loadRoot("sounds/");
+<pre class="language-javascript"><code class="lang-javascript">loadRoot("sounds/");
 loadSound("menumusic", "menu.mp3");
 
 loadSound("mainmusic", "MUSIC!.mp3");

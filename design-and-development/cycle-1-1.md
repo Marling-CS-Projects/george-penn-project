@@ -105,7 +105,7 @@ Evidence for testing
 
 ### Evidence
 
-```
+```javascript
 //this loads in the sprites needed
 loadRoot("sprites/");
 loadSprite("melon boy", "melon boy.png");

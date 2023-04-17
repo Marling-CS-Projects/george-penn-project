@@ -1,4 +1,4 @@
-# 2.2.1 Cycle 1
+# Cycle 1
 
 ## Design
 
@@ -77,7 +77,7 @@ Evidence for testing
 
 ### Evidence
 
-```
+```javascript
 import kaboom from "kaboom";
 
 //This creates the background colour.

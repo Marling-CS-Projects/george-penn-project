@@ -60,7 +60,7 @@ I needed to test multiple instances of collision and how the boss would react.
 
 ### Evidence
 
-```
+```javascript
 function patrol(distance = 100, speed = 50, dir = 1) {
   return {
     id: "patrol",

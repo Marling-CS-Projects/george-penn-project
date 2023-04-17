@@ -95,7 +95,7 @@ Creating the behaviour for the floating blocks was easily the biggest challenge 
 
 ### Evidence
 
-```
+```javascript
 function spawnEvil() {
 
 		// add tree obj

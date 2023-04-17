@@ -71,7 +71,7 @@ Evidence for testing
 
 ### Evidence
 
-```
+```javascript
 onKeyDown("right", () => {
   player.flipX(false)
   player.move(SPEED, 0);

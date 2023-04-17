@@ -89,7 +89,7 @@ The main challenge of this development cycle was getting the iframes to work and
 
 ### Evidence
 
-```
+```javascript
 let health = 3;
 
 let died = false;

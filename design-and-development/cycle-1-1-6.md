@@ -106,7 +106,7 @@ Unfortunately, the high score does not save across game start-ups and is reset w
 
 ### Evidence
 
-```
+```javascript
 onKeyPress("up", () => {
   if (player.isGrounded()) {
     player.jump(450);
